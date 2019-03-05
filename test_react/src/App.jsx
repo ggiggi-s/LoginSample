@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { observer, inject } from 'mobx-react';
+import MainPage from './pages/Main/MainPage';
+import LoginPage from './pages/Login/LoginPage';
 
-class App extends Component {
-  render() {
-    return (
-      <div />
-    );
+function App(props) {
+  const { pageState } = props;
+  let page;
+  switch (pageState) {
+    case 'MAIN': page = <MainPage />; break;
+    case 'LOGIN': page = <LoginPage />; break;
+    default: page = <MainPage />; break;
   }
+  return page;
 }
 
-export default App;
+export default inject(({ pageStateStore }) => ({
+  pageState: pageStateStore.pageState,
+}))(observer(App));

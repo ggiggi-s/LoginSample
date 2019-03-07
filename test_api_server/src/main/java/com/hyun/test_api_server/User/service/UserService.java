@@ -1,18 +1,11 @@
 package com.hyun.test_api_server.User.service;
 
 import com.hyun.test_api_server.User.entity.User;
-import com.hyun.test_api_server.User.repository.UserRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Service
-public class UserService {
-    private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public void createUser(User user) {
-        userRepository.save(user);
-    }
+public interface UserService extends UserDetailsService {
+    boolean createUser(User user);
+    User findUser(String name);
+    PasswordEncoder passwordEncoder();
 }

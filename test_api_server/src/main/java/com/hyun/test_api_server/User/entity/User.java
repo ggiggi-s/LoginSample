@@ -10,13 +10,12 @@ import java.util.Collection;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
+@Getter
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
     private String username;
-    @Getter
-    @Setter
     private String name;
     private String password;
     @OneToMany(targetEntity = Authority.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)

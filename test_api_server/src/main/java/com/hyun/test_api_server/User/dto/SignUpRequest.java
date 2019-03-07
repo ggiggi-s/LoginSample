@@ -21,6 +21,7 @@ public class SignUpRequest {
 
         return User.builder()
                 .name(name)
+                .username(username)
                 .password(password)
                 .authorities(authorities)
                 .build();

@@ -6,6 +6,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public interface UserService extends UserDetailsService {
     boolean createUser(User user);
-    User findUser(String name);
+    User findUser(String username);
     PasswordEncoder passwordEncoder();
 }

@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
                     .username(user.getUsername())
                     .password(passwordEncoder.encode(user.getPassword()))
                     .name(user.getName())
+                    .authorities(user.getAuthorities())
                     .build();
             userRepository.save(createdUser);
             return true;
@@ -38,8 +39,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUser(String name) {
-        return userRepository.findByName(name);
+    public User findUser(String username) {
+        return userRepository.findByUsername(username);
     }
 
     @Override

@@ -12,9 +12,9 @@ public class HomeController {
         this.homeRepository = homeRepository;
     }
 
-    @RequestMapping("/{name}")
-    public String home(@PathVariable String name) {
-        Home foundUser = homeRepository.findByName(name);
-        return "Hello, " + foundUser.getName() + "!";
+    @RequestMapping("/test")
+    public String home() {
+//        Home foundUser = homeRepository.findByName(name);
+        return "Hello";
     }
 }
